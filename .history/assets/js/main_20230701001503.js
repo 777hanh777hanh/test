@@ -8,7 +8,7 @@ const btnElement = $('#btn');
 
 // Method
 function request(url, giftCode) {
-    const newURL = url + giftCode;
+    const newURL = `https://cors-anywhere.herokuapp.com/` + url + giftCode;
     fetch(newURL, {
         headers: {
             'Access-Control-Allow-Origin': '*',

@@ -8,8 +8,10 @@ const btnElement = $('#btn');
 
 // Method
 function request(url, giftCode) {
-    const newURL = url + giftCode;
+    const newURL = `https://cors-anywhere.herokuapp.com/` + url + giftCode;
     fetch(newURL, {
+        credentials: 'same-origin',
+        mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*',
         },
@@ -22,7 +24,7 @@ function request(url, giftCode) {
             return data;
         })
         .catch((error) => {
-            console.log(`${error}`);
+            console.log(error);
         });
 }
 
@@ -30,7 +32,7 @@ function request(url, giftCode) {
 btnElement.addEventListener('click', () => {
     const url =
         urlElement.value.trim() ||
-        'https://sg-hkrpg-api.hoyoverse.com/' +
+        'sg-hkrpg-api.hoyoverse.com/' +
             'common/apicdkey/api/' +
             'webExchangeCdkey?t=1688100564621' +
             '&lang=vi&game_biz=hkrpg_global' +

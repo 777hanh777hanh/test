@@ -9,12 +9,10 @@ const btnElement = $('#btn');
 // Method
 function request(url, giftCode) {
     const newURL = url + giftCode;
-    fetch(newURL, {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
-    })
+
+    fetch(newURL)
         .then((res) => {
+            console.log(res);
             return res.json();
         })
         .then((data) => {
@@ -22,7 +20,7 @@ function request(url, giftCode) {
             return data;
         })
         .catch((error) => {
-            console.log(`${error}`);
+            console.log(error);
         });
 }
 
@@ -46,3 +44,13 @@ btnElement.addEventListener('click', () => {
         });
     }
 });
+
+// ---
+const url =
+    'https://sg-hkrpg-api.hoyoverse.com/' +
+    'common/apicdkey/api/' +
+    'webExchangeCdkey?t=1688100564621' +
+    '&lang=vi&game_biz=hkrpg_global' +
+    '&uid=800271421' +
+    '&region=prod_official_asia' +
+    '&cdkey=';

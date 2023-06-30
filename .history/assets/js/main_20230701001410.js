@@ -10,6 +10,8 @@ const btnElement = $('#btn');
 function request(url, giftCode) {
     const newURL = url + giftCode;
     fetch(newURL, {
+        credentials: 'same-origin',
+        mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*',
         },

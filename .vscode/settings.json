@@ -1,3 +1,4 @@
 {
-    "cSpell.words": ["apicdkey", "Cdkey", "hkrpg", "tabindex"]
+    "cSpell.words": ["apicdkey", "Cdkey", "hkrpg", "tabindex"],
+    "liveServer.settings.port": 5500
 }

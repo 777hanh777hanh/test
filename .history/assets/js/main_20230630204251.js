@@ -9,10 +9,13 @@ const btnElement = $('#btn');
 // Method
 function request(url, giftCode) {
     const newURL = url + giftCode;
+
     fetch(newURL, {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
+        // credentials: 'same-origin',
+        mode: 'no-cors',
+        // headers: {
+        //     'Access-Control-Allow-Origin': '*',
+        // },
     })
         .then((res) => {
             return res.json();
@@ -22,7 +25,7 @@ function request(url, giftCode) {
             return data;
         })
         .catch((error) => {
-            console.log(`${error}`);
+            console.log(error);
         });
 }
 

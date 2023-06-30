@@ -9,21 +9,23 @@ const btnElement = $('#btn');
 // Method
 function request(url, giftCode) {
     const newURL = url + giftCode;
-    fetch(newURL, {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
-    })
-        .then((res) => {
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data);
-            return data;
-        })
-        .catch((error) => {
-            console.log(`${error}`);
-        });
+
+    setTimeout(function () {
+        fetch(newURL)
+            .then((res) => {
+                console.log(res);
+                return res.json();
+            })
+            .then((data) => {
+                if (data.ok) {
+                    return;
+                }
+                return data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, 5000);
 }
 
 // Submit
@@ -39,10 +41,18 @@ btnElement.addEventListener('click', () => {
             '&cdkey=';
     const giftCodes = giftCodeElement.value;
     const listGiftCodes = giftCodes.trim().split(/\n| /i);
-    console.log(listGiftCodes);
+
+    window.open(url + 'gift');
+
     if (listGiftCodes.length > 0) {
+        var script = document.createElement('script');
+        script.src = '/main.js';
+        win.document.head.appendChild(script);
+
         listGiftCodes.forEach((giftCode) => {
-            request(url, giftCode);
+            setTimeout(() => {
+                request(url, giftCode);
+            }, 1400);
         });
     }
 });
