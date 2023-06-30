@@ -1,0 +1,94 @@
+:root {
+    --text-color: #333;
+    --font-family: 'Space Mono', monospace;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--font-family, 'system-ui');
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1.6rem;
+    overflow: overlay;
+    background: #fefefe;
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.06);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* CSS */
+.inner {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 3fr;
+    grid-template-areas:
+        'url url result'
+        'giftCode giftCode result';
+    column-gap: 14px;
+    row-gap: 24px;
+}
+
+/* Input Block */
+.url-block {
+    grid-area: url;
+}
+
+.url {
+    display: block;
+    padding: 12px 40px;
+    width: 100%;
+    height: 100%;
+    font-size: 1.6rem;
+    border-radius: 23px 23px 0 0;
+    box-shadow: 0 0 10px 1px #ccc;
+}
+
+.giftCode-block {
+    grid-area: giftCode;
+    padding: 32px 40px;
+    border-radius: 0 0 23px 23px;
+    box-shadow: 0 0 10px 1px #ccc;
+}
+
+.giftCode {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 2.3rem;
+    font-family: var(--font-family, 'monospace');
+    resize: none;
+}
+
+.result-block {
+    grid-area: result;
+    display: flex;
+    flex-direction: column;
+    background: red;
+    row-gap: 24px;
+}
+
+.result {
+    flex-grow: 1;
+    background-color: blue;
+}
